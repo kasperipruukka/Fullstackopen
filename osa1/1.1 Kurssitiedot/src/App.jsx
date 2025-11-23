@@ -29,13 +29,18 @@ const Header = (props) => {
 const Content = (props) => {
 	const parts = props.parts;
 	const exercises = props.exercises;
-	const partsAndExercises = parts.map((part, index) => {
-		return <p key={index}>{part} {exercises[index]}</p>
-	});
 
 	return (
 		<>
-			{partsAndExercises}
+			<p>
+				{parts[0]} {exercises[0]}
+			</p>
+			<p>
+				{parts[1]} {exercises[1]}
+			</p>
+			<p>
+				{parts[2]} {exercises[2]}
+			</p>
 		</>
 	)
 }
