@@ -33,3 +33,11 @@ Seuraa näitä ohjeita uuden projektin luomiseen:
 
    export default App;
    ```
+
+5. Poista seuraavat hakemistot:
+ - src/`assets`
+
+6. Poista seuraavat tiedostot:
+ - src/`App.cs`
+ - src/`index.cs`
+ - src/`App.cs`
