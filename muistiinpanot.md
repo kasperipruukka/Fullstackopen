@@ -1,43 +1,74 @@
-# Uuden projektin teko
+# Full Stack Open -muistiinpanot
 
-Seuraa näitä ohjeita uuden projektin luomiseen:
+## Kurssin rakenne
 
-1. Mene hakemistoon `osa1`:
-   ```bash
-   cd osa1
+- Jokainen numeroitu tehtävä on oma Vite + React -projektinsa kansioissa `osa1/` ja `osa2/`.
+- Valmis tehtävä jätetään ennalleen. Seuraava tehtävä aloitetaan kopiona edellisestä sopivasta tehtävästä.
+- Harjoituksen data, esimerkiksi `db.json`, kuuluu projektiin ja Git-versiohallintaan.
+
+## Jatkaessasi kurssia
+
+1. Avaa ensin kyseinen tehtäväkansio VS Codessa tai siirry siihen terminaalissa:
+
+   ```powershell
+   cd 'osa2/2.12 Kurssitiedot'
    ```
 
-2. Luo uusi sovellus `create-vite`-työkalun avulla:
-   ```bash
-   npm create vite@latest
+2. Asenna riippuvuudet tarvittaessa, erityisesti jos `node_modules`-kansiota ei ole:
+
+   ```powershell
+   npm install
    ```
 
-3. Muokkaa tiedostoa `main.jsx` seuraavasti:
-   ```javascript
-   import ReactDOM from 'react-dom/client';
+3. Käynnistä React-sovellus:
 
-   import App from './App';
-
-   ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+   ```powershell
+   npm run dev
    ```
 
-4. Muokkaa tiedostoa `App.jsx` seuraavasti:
-   ```javascript
-   const App = () => {
-      return (
-         <div>
-            Koodia tänne
-         </div>
-      )
-   }
+4. Jos tehtävä käyttää JSON-palvelinta, käynnistä se toisessa terminaalissa:
 
-   export default App;
+   ```powershell
+   npm run server
    ```
 
-5. Poista seuraavat hakemistot:
- - src/`assets`
+   Palvelin käyttää tavallisesti osoitetta `http://localhost:3001` ja dataa tiedostosta `db.json`. Projektissa pitää olla paikallinen `json-server`-riippuvuus sekä skripti:
 
-6. Poista seuraavat tiedostot:
- - src/`App.cs`
- - src/`index.cs`
- - src/`App.cs`
+   ```json
+   "server": "json-server --port 3001 db.json"
+   ```
+
+   Lisää puuttuva riippuvuus näin:
+
+   ```powershell
+   npm install --save-dev json-server
+   ```
+
+5. Tarkista ennen tehtävän lopettamista:
+
+   ```powershell
+   npm run lint
+   npm run build
+   ```
+
+## Pyynnöt Copilotille
+
+Kun tulee uusi numeroitu tehtävä, riittää yleensä pyyntö:
+
+> Tee seuraava kansio valmiiksi.
+
+Copilot kopioi viimeisimmän asiaankuuluvan tehtävän seuraavaan numeroituun kansioon, jättää `node_modules`- ja `dist`-kansiot pois, päivittää `index.html`-otsikon, varmistaa paikallisen `json-server`-asennuksen sekä ajaa `npm install`, lintin ja buildin.
+
+Jos et halua käyttää viimeisintä tehtävää pohjana, täsmennä esimerkiksi:
+
+> Luo 2.13 Kurssitiedot 2.10-tehtävän pohjalta.
+
+Jos taas haluat täysin uuden Vite-pohjan, sano:
+
+> Luo tyhjä React + Vite -pohja kansioon osa2/2.13 Kurssitiedot.
+
+## React ja palvelindata
+
+- Lisää HTTP-pyyntöihin Axios: `npm install axios`.
+- Hae alkudata `useEffect`-hookissa ja tallenna vastaus stateen `setPersons(response.data)`-tyyppisellä kutsulla.
+- Tyhjä riippuvuustaulukko `[]` tarkoittaa, että haku tehdään vain komponentin ensimmäisen renderöinnin jälkeen.
