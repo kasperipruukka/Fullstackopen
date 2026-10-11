@@ -23,30 +23,49 @@ const PersonForm = ({ newName, handleNameChange, newNumber, handleNumberChange, 
   </div>
 )
 
-const NumberList = ({ persons, filter }) => {
-  const personList = persons.map(
-    person => <li key={person.id}>{person.name} {person.number}</li>
+const NumberList = ({ persons, filter, handleDelete }) => {
+  const filteredPersons = persons.filter(
+    person => person.name.toLowerCase().includes(filter.toLowerCase())
   );
 
-  const filteredPersons = personList.filter(
-    person => person.props.children[0].toLowerCase().includes(filter.toLowerCase())
-  );
-  
   return (
     <ul>
-      {filteredPersons.length > 0 ? filteredPersons : <li>No matches found</li>}
+      {filteredPersons.length > 0
+        ? filteredPersons.map(person => (
+            <li key={person.id}>
+              <p>
+                {person.name} {person.number} <button onClick={() => handleDelete(person.id)}>Delete</button>
+              </p>
+            </li>
+          ))
+        : <li>No matches found</li>}
     </ul>
   )
 }
 
 const App = () => {
+  
+  const handleDelete = (id) => {
+    const personToDelete = persons.find(person => person.id === id);
+
+    if (!window.confirm(`Are you sure you want to delete ${personToDelete.name}?`)) {
+      return;
+    }
+
+    phonebookService
+      .remove(id)
+      .then(() => {
+        const updatedPersons = persons.filter(person => person.id !== id);
+        setPersons(updatedPersons);
+      });
+  }
 
   // Hakee henkilötiedot palvelimelta.
   const getData = () => {
     phonebookService
       .getAll()
       .then(data => {
-        console.log(data);
+
         setPersons(data)
       })
   }
@@ -95,7 +114,6 @@ const App = () => {
     phonebookService
       .create(personObject)
       .then(data => {
-        console.log(data);
         setPersons(persons.concat(data));
         resetForm()
       });
@@ -116,7 +134,7 @@ const App = () => {
       />
 
       <h2>Numbers</h2>
-      <NumberList persons={persons} filter={filter} />
+      <NumberList persons={persons} filter={filter} handleDelete={handleDelete} />
     </div>
   )
 

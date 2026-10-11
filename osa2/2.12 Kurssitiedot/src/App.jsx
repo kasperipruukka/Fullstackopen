@@ -46,7 +46,6 @@ const App = () => {
     phonebookService
       .getAll()
       .then(data => {
-        console.log(data);
         setPersons(data)
       })
   }
@@ -95,7 +94,6 @@ const App = () => {
     phonebookService
       .create(personObject)
       .then(data => {
-        console.log(data);
         setPersons(persons.concat(data));
         resetForm()
       });
