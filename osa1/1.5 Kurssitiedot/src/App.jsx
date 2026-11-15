@@ -15,7 +15,7 @@ const App = () => {
 				exercises: 14
 			}
 		]
-	}
+	};
 
 	return (
 		<>
@@ -23,8 +23,8 @@ const App = () => {
 			<Content course={course}/>
 			<Total course={course} />
 		</>
-	)
-}
+	);
+};
 
 const Header = (props) => {
 	const course = props.course;
@@ -34,8 +34,8 @@ const Header = (props) => {
 		<>
 			<h1>{courseText}</h1>
 		</>
-	)
-}
+	);
+};
 
 const Content = (props) => {
 	const course = props.course;
@@ -45,12 +45,12 @@ const Content = (props) => {
 		<>
 			{
 				parts.map((p, key) => {
-					return <Part key={key} name={p.name} exercises={p.exercises} />
+					return <Part key={key} name={p.name} exercises={p.exercises} />;
 				})
 			}
 		</>
-	)
-}
+	);
+};
 
 const Part = (props) => {
 	const name = props.name;
@@ -60,8 +60,8 @@ const Part = (props) => {
 		<>
 			<p>{name} {exercises}</p>
 		</>
-	)
-}
+	);
+};
 
 const Total = (props) => {
 	const course = props.course;
@@ -72,8 +72,8 @@ const Total = (props) => {
 		<>
 			<p>Number of exercises {sum}</p>
 		</>
-	)
-}
+	);
+};
 
 
-export default App
+export default App;

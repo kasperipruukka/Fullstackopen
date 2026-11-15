@@ -19,8 +19,8 @@ const Statistics = ({ good, neutral, bad, all, average, positive }) => {
       {all > 0 ? <Paragraph text={`Average: ${average}`} /> : undefined}
       {all > 0 ? <Paragraph text={`Positive: ${positive}%`} /> : undefined}
     </div>
-  )
-}
+  );
+};
 
 const History = ({ all, good, neutral, bad, average, positive }) => {
   if (all === 0) {
@@ -43,8 +43,8 @@ const History = ({ all, good, neutral, bad, average, positive }) => {
         positive={positive} 
       />
     </div>
-  )
-}
+  );
+};
 
 const App = () => {
 
@@ -66,11 +66,11 @@ const App = () => {
   // (hyvän arvo 1, neutraalin 0, huonon -1)
   const countAverage = (goodCount, badCount, neutralCount, all) => {
     return ((goodCount * 1) + (neutralCount * 0) + (badCount * -1)) / all;
-  }
+  };
 
   const countPositive = (goodCount, all) => {
     return (goodCount / all) * 100;
-  }
+  };
 
   const handleButtonClick = (type) => {
     const newValues = {

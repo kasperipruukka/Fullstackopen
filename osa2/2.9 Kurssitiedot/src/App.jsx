@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const NumberList = ({ persons, filter }) => {
   const personList = persons.map(
@@ -13,8 +13,8 @@ const NumberList = ({ persons, filter }) => {
     <ul>
       {filteredPersons.length > 0 ? filteredPersons : <li>No matches found</li>}
     </ul>
-  )
-}
+  );
+};
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -22,40 +22,40 @@ const App = () => {
     { id: Date.now() + 1, name: 'Ada Lovelace', number: '39-44-5323523' },
     { id: Date.now() + 2, name: 'Dan Abramov', number: '12-43-234345' },
     { id: Date.now() + 3, name: 'Mary Poppendieck', number: '39-23-6423122' }
-  ]) 
+  ]); 
   
-  const [newName, setNewName] = useState('')
-  const [newNumber, setNewNumber] = useState('')
-  const [filter, setFilter] = useState('')
+  const [newName, setNewName] = useState('');
+  const [newNumber, setNewNumber] = useState('');
+  const [filter, setFilter] = useState('');
 
   const handleFilterChange = (event) => {
-    setFilter(event.target.value)
-  }
+    setFilter(event.target.value);
+  };
 
   const handleNameChange = (event) => {
-    setNewName(event.target.value)
-  }
+    setNewName(event.target.value);
+  };
 
   const handleNumberChange = (event) => {
-    setNewNumber(event.target.value)
-  }
+    setNewNumber(event.target.value);
+  };
   
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const personObject = {
       id: Date.now(),
       name: newName,
       number: newNumber
-    }
+    };
 
     if (persons.some(person => person.name === newName)) {
-      alert(`${newName} is already added to phonebook`)
-      return
+      alert(`${newName} is already added to phonebook`);
+      return;
     }
 
-    setPersons(persons.concat(personObject))
-    setNewName('')
-  }
+    setPersons(persons.concat(personObject));
+    setNewName('');
+  };
 
   return (
     <div>
@@ -82,8 +82,8 @@ const App = () => {
       <h2>Numbers</h2>
       <NumberList persons={persons} filter={filter} />
     </div>
-  )
+  );
 
-}
+};
 
-export default App
+export default App;

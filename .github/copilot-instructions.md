@@ -36,4 +36,5 @@ npm run build
 
 - Make focused changes only in the exercise currently being worked on.
 - Preserve the existing JavaScript, React, and formatting style of that exercise.
+- Always end JavaScript and JSX statements with semicolons, including in generated, scaffolded, and backend (Node/Express) code.
 - Do not alter earlier completed exercises when preparing the next one.

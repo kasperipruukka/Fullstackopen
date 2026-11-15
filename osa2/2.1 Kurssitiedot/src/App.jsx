@@ -4,8 +4,8 @@ const Part = ({ part }) => {
     <div>
       <p>{part.name} {part.exercises}</p>
     </div>
-  )
-}
+  );
+};
 
 const Content = ({ course }) => {
   return (
@@ -14,11 +14,11 @@ const Content = ({ course }) => {
         <Part key={part.id} part={part} />
       )}
     </div>
-  )
-}
+  );
+};
 
 
-const Header = ({ text }) => <div><h1>{text}</h1></div>
+const Header = ({ text }) => <div><h1>{text}</h1></div>;
 
 const Course = ({ course }) => {
   return (
@@ -26,8 +26,8 @@ const Course = ({ course }) => {
       <Header text={course.name} />
       <Content course={course} />
     </div>
-  )
-}
+  );
+};
 
 const App = () => {
   const course = {
@@ -50,13 +50,13 @@ const App = () => {
         id: 3
       }
     ]
-  }
+  };
 
   return (
     <div>
       <Course course={course} />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

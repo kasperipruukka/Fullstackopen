@@ -1,6 +1,6 @@
-import Course from './components/Course'
+import Course from './components/Course';
 
-const MainHeader = ({ text }) => <div><h1>{text}</h1></div>
+const MainHeader = ({ text }) => <div><h1>{text}</h1></div>;
 
 const App = ({ courses }) => {
 
@@ -12,7 +12,7 @@ const App = ({ courses }) => {
         <Course key={course.id} course={course} />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

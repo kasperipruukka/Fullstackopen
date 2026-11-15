@@ -1,32 +1,32 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const NumberList = ({ persons }) => {
   return (
     <ul>
       {persons.map(person => <li key={person.name}>{person.name}</li>)}
     </ul>
-  )
-}
+  );
+};
 
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas' }
-  ]) 
-  const [newName, setNewName] = useState('')
+  ]); 
+  const [newName, setNewName] = useState('');
 
   const handleNameChange = (event) => {
-    setNewName(event.target.value)
-  }
+    setNewName(event.target.value);
+  };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const personObject = {
       name: newName
-    }
+    };
 
-    setPersons(persons.concat(personObject))
-    setNewName('')
-  }
+    setPersons(persons.concat(personObject));
+    setNewName('');
+  };
 
   return (
     <div>
@@ -42,8 +42,8 @@ const App = () => {
       <h2>Numbers</h2>
       <NumberList persons={persons} />
     </div>
-  )
+  );
 
-}
+};
 
-export default App
+export default App;

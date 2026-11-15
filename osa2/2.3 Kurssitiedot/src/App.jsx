@@ -4,8 +4,8 @@ const Part = ({ part }) => {
     <div>
       <p>{part.name} {part.exercises}</p>
     </div>
-  )
-}
+  );
+};
 
 const Total = ({ course }) => {
   const total = course.parts.reduce(
@@ -16,8 +16,8 @@ const Total = ({ course }) => {
     <div>
       <p><b>Total of {total} exercises</b></p>
     </div>
-  )
-}
+  );
+};
 
 const Content = ({ course }) => {
   return (
@@ -27,11 +27,11 @@ const Content = ({ course }) => {
       )}
       <Total course={course} />
     </div>
-  )
-}
+  );
+};
 
 
-const Header = ({ text }) => <div><h1>{text}</h1></div>
+const Header = ({ text }) => <div><h1>{text}</h1></div>;
 
 const Course = ({ course }) => {
   return (
@@ -39,8 +39,8 @@ const Course = ({ course }) => {
       <Header text={course.name} />
       <Content course={course} />
     </div>
-  )
-}
+  );
+};
 
 const App = () => {
   const course = {
@@ -68,13 +68,13 @@ const App = () => {
         id: 4
       }
     ]
-  }
+  };
 
   return (
     <div>
       <Course course={course} />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

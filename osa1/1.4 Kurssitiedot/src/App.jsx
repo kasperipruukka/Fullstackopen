@@ -13,7 +13,7 @@ const App = () => {
 			name: 'State of a component',
 			exercises: 14
 		}
-	]
+	];
 
 	return (
 		<>
@@ -21,8 +21,8 @@ const App = () => {
 			<Content parts={parts}/>
 			<Total parts={parts} />
 		</>
-	)
-}
+	);
+};
 
 const Header = (props) => {
 	const courseText = props.course;
@@ -31,8 +31,8 @@ const Header = (props) => {
 		<>
 			<h1>{courseText}</h1>
 		</>
-	)
-}
+	);
+};
 
 const Content = (props) => {
 	const parts = props.parts;
@@ -41,12 +41,12 @@ const Content = (props) => {
 		<>
 			{
 				parts.map((p, key) => {
-					return <Part key={key} name={p.name} exercises={p.exercises} />
+					return <Part key={key} name={p.name} exercises={p.exercises} />;
 				})
 			}
 		</>
-	)
-}
+	);
+};
 
 const Part = (props) => {
 	const name = props.name;
@@ -56,8 +56,8 @@ const Part = (props) => {
 		<>
 			<p>{name} {exercises}</p>
 		</>
-	)
-}
+	);
+};
 
 const Total = (props) => {
 	const parts = props.parts;
@@ -67,8 +67,8 @@ const Total = (props) => {
 		<>
 			<p>Number of exercises {sum}</p>
 		</>
-	)
-}
+	);
+};
 
 
-export default App
+export default App;
