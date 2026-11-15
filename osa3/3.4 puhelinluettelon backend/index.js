@@ -27,6 +27,8 @@ let persons = [
   }
 ];
 
+const personNotFound = { error: 'Henkilöä ei löytynyt.' };
+
 app.get('/', (request, response) => {
   response.send('<h1>Puhelinluettelo</h1>');
 });
@@ -43,9 +45,21 @@ app.get('/api/persons/:id', (request, response) => {
   if (person) {
     response.json(person);
   } else {
-    response.status(404).json({ error: 'Henkilöä ei löytynyt.' });
+    response.status(404).json(personNotFound);
   }
 
+});
+
+// Poista henkilö id:n perusteella.
+app.delete('/api/persons/:id', (request, response) => {
+  const id = request.params.id;
+  const personIndex = persons.findIndex(p => p.id === id);
+  if (personIndex !== -1) {
+    persons.splice(personIndex, 1);
+    response.status(204).end();
+  } else {
+    response.status(404).json(personNotFound);
+  }
 });
 
 app.get('/info', (request, response) => {
